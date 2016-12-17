@@ -1,20 +1,16 @@
 // API REPO:  https://github.com/Giphy/GiphyAPI
 
-// public key = dc6zaTOxFJmzC
-
-//
-
 window.onload = function() {
 
   var searchTerms = ["cats", "basketball"];
 
-
-
-
 }
 
 
-
+$('#clear').on("click", function(e) {
+  e.preventDefault();
+  $("#showGIFS").empty();
+})
 
 
 $("#search").on("click", function(e){
