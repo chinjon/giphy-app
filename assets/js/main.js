@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
     var searchGifs = {
-        searchTerms: ["cats", "basketball", "dogs", "lol", "fail", "fall", "laugh", "cute", "awwww"],
+        searchTerms: ["cats", "basketball", "dogs", "lol", "jump", "fall", "laugh", "cute", "awwww"],
         createButtons: function() {
             for (var i = 0; i < searchGifs.searchTerms.length; i++) {
                 var newBttn = $('<button>');
