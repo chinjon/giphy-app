@@ -1,42 +1,59 @@
 // API REPO:  https://github.com/Giphy/GiphyAPI
 
-window.onload = function() {
 
-  var searchTerms = ["cats", "basketball"];
 
-}
+var searchTerms = ["cats", "basketball"];
 
 
 $('#clear').on("click", function(e) {
-  e.preventDefault();
-  $("#showGIFS").empty();
+    e.preventDefault();
+    $("#showGIFS").empty();
 })
 
 
-$("#search").on("click", function(e){
+$("#search").on("click", function(e) {
 
-  e.preventDefault();
+    e.preventDefault();
 
-  var userQuery = $('#inputBox').val();
-  console.log(userQuery);
+    var userQuery = $('#inputBox').val();
+    searchTerms.push(userQuery);
 
-  var key = "&api_key=dc6zaTOxFJmzC";
-  var limit = "&limit=5"
-  var reqUrl = "http://api.giphy.com/v1/gifs/search?q="+userQuery+limit+key;
-  console.log(reqUrl);
-  $.ajax({
-    url: reqUrl,
-    method: "GET"
-  }).done(function(response){
+    var key = "&api_key=dc6zaTOxFJmzC";
+    var limit = "&limit=5"
+    var reqUrl = "http://api.giphy.com/v1/gifs/search?q=" + userQuery + limit + key;
+    console.log(reqUrl);
+    $.ajax({
+        url: reqUrl,
+        method: "GET"
+    }).done(function(response) {
 
-    console.log(response.data[0].images["fixed_height"].url);
-    var imgLink = response.data[0].images["fixed_height"].url;
-    var newImg = $('<img>');
+        for (var i = 0; i < response.data.length; i++) {
+            console.log(response.data[i].images["fixed_height"].url);
+            var animateLink = response.data[i].images["fixed_height"].url;
+            // var imgLink = response.data[0].images["fixed_height_still"].url; // gets the still version of gif
+            var stillLink = response.data[i].images["fixed_height_still"].url;
+            var newImg = $('<img>');
 
-    newImg.attr('src', imgLink);
-    $('#showGIFS').append(newImg);
+            newImg.attr('src', stillLink);
+            newImg.attr('data-animate', animateLink);
+            newImg.attr('data-still', stillLink);
+            newImg.attr('data-state', "still")
+            newImg.addClass('gif');
+            $('#showGIFS').append(newImg);
 
-  })
+            // doesn't work on every other gif??
+            $('.gif').on("click", function() {
+                var state = $(this).attr("data-state");
+                if (state === "still") {
+                    $(this).attr('src', $(this).data("animate"));
+                    $(this).attr("data-state", "animate");
+                } else {
+                    $(this).attr('src', $(this).data("still"));
+                    $(this).attr("data-state", "still");
+                }
+            })
 
+        }
+    })
 
 })
