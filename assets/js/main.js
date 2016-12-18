@@ -1,28 +1,42 @@
 // API REPO:  https://github.com/Giphy/GiphyAPI
-var searchTerms = ["cats", "basketball"];
+
 
 
 // try to put in object
 
-for(var i = 0; i < searchTerms.length;i++){
-  var newBttn = $('<button>');
-  newBttn.attr("data-search", searchTerms[i]);
-  newBttn.addClass("btn");
-  newBttn.addClass("searchButtons");
-  newBttn.text(searchTerms[i]);
-  $('#searchButtonsContainer').append(newBttn);
+
+
+var searchGifs = {
+  searchTerms: ["cats", "basketball"],
+  createButtons: function() {
+    for(var i = 0; i < searchGifs.searchTerms.length;i++){
+      var newBttn = $('<button>');
+      newBttn.attr("data-search", searchGifs.searchTerms[i]);
+      newBttn.addClass("btn");
+      newBttn.addClass("searchButtons");
+      newBttn.text(searchGifs.searchTerms[i]);
+      $('#searchButtonsContainer').append(newBttn);
+    }
+  },
+  addSearchTerms: function(item) {
+    var newBttn = $('<button>');
+    newBttn.attr("data-search", item);
+    newBttn.addClass("btn");
+    newBttn.addClass("searchButtons");
+    newBttn.text(item);
+    $('#searchButtonsContainer').append(newBttn);
+  }
 }
+
+searchGifs.createButtons();
 
 $('#submitTerm').on("click", function(e){
   e.preventDefault();
-
   var userTerm = $('#submitBox').val();
-
-  if(searchTerms.indexOf(userTerm) < 0) {
-    searchTerms.push(userTerm);
-    console.log(searchTerms)
+  if(searchGifs.searchTerms.indexOf(userTerm) < 0) {
+    searchGifs.searchTerms.push(userTerm);
+    searchGifs.addSearchTerms(userTerm);
   }
-
 })
 
 
@@ -38,7 +52,7 @@ $("#search").on("click", function(e) {
     e.preventDefault();
 
     var userQuery = $('#inputBox').val();
-    searchTerms.push(userQuery);
+    // searchTerms.push(userQuery);
 
     var key = "&api_key=dc6zaTOxFJmzC";
     var limit = "&limit=5"
