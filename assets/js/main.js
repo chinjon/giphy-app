@@ -1,8 +1,29 @@
 // API REPO:  https://github.com/Giphy/GiphyAPI
-
-
-
 var searchTerms = ["cats", "basketball"];
+
+
+
+
+for(var i = 0; i < searchTerms.length;i++){
+  var newBttn = $('<button>');
+  newBttn.attr("data-search", searchTerms[i]);
+  newBttn.addClass("btn");
+  newBttn.addClass("searchButtons");
+  newBttn.text(searchTerms[i]);
+  $('#searchButtonsContainer').append(newBttn);
+}
+
+$('#submitTerm').on("click", function(e){
+  e.preventDefault();
+
+  var userTerm = $('#submitBox').val();
+
+  if(searchTerms.indexOf(userTerm) < 0) {
+    searchTerms.push(userTerm);
+  }
+
+})
+
 
 
 $('#clear').on("click", function(e) {
@@ -51,8 +72,10 @@ $("#search").on("click", function(e) {
                 $(this).attr('src', $(this).data("still"));
                 $(this).attr("data-state", "still");
             }
-        })
+        });
 
     })
+
+
 
 })
