@@ -2,7 +2,7 @@
 var searchTerms = ["cats", "basketball"];
 
 
-
+// try to put in object
 
 for(var i = 0; i < searchTerms.length;i++){
   var newBttn = $('<button>');
@@ -20,6 +20,7 @@ $('#submitTerm').on("click", function(e){
 
   if(searchTerms.indexOf(userTerm) < 0) {
     searchTerms.push(userTerm);
+    console.log(searchTerms)
   }
 
 })
@@ -75,7 +76,5 @@ $("#search").on("click", function(e) {
         });
 
     })
-
-
 
 })
