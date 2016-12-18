@@ -35,7 +35,7 @@ $(document).ready(function() {
             var userQuery = $(this).data('search');
             var key = "&api_key=dc6zaTOxFJmzC";
             var limit = "&limit=5"
-            var reqUrl = "http://api.giphy.com/v1/gifs/search?q=" + userQuery + limit + key;
+            var reqUrl = "https://api.giphy.com/v1/gifs/search?q=" + userQuery + limit + key;
             // console.log(reqUrl);
             $.ajax({
                 url: reqUrl,
@@ -71,6 +71,7 @@ $(document).ready(function() {
     searchGifs.createButtons();
 
 
-    $(".searchButtons").click(searchGifs.displayResults);
+
     $('#submitTerm').click(searchGifs.addSearchTerms);
+    $(".searchButtons").click(searchGifs.displayResults);
 });
