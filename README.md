@@ -11,3 +11,4 @@ Each search term that is added to the page as a clickable button which will disp
 
 - Change search functionality to display trending GIFs instead of the same set of GIFs corresponding to search terms.
 - As of now, the search terms added by users will not work with search function.
+- Create a hover function instead of a click function to play GIFs.
