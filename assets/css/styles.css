@@ -8,10 +8,6 @@
 
 body {
   font-family: 'Ubuntu Mono', monospace;
-  background: #FC354C; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #FC354C , #0ABFBC); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #FC354C , #0ABFBC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 }
 
 .gif {

@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
     var searchGifs = {
-        searchTerms: ["cats", "basketball", "dogs", "lol", "jump", "fall", "laugh", "cute", "awwww"],
+        searchTerms: ["cats", "basketball", "dogs", "lol", "run", "fall", "laugh", "cute", "awwww"],
         createButtons: function() {
             for (var i = 0; i < searchGifs.searchTerms.length; i++) {
                 var newBttn = $('<button>');
@@ -13,21 +13,6 @@ $(document).ready(function() {
                 $('#searchButtonsContainer').append(newBttn);
             }
         },
-        addSearchTerms: function(e) {
-          e.preventDefault();
-          var userTerm = $('#submitBox').val();
-
-          if (searchGifs.searchTerms.indexOf(userTerm) < 0) {
-              searchGifs.searchTerms.push(userTerm);
-              var newBttn = $('<button>');
-              newBttn.attr("data-search", userTerm);
-              newBttn.addClass("btn");
-              newBttn.addClass("searchButtons");
-              newBttn.text(userTerm);
-              $('#searchButtonsContainer').append(newBttn);
-          }
-
-        },
         displayResults: function(e) {
             $('#showGIFS').empty();
             e.preventDefault();
@@ -35,7 +20,7 @@ $(document).ready(function() {
             var userQuery = $(this).data('search');
             var key = "&api_key=dc6zaTOxFJmzC";
             var limit = "&limit=5"
-            var reqUrl = "https://api.giphy.com/v1/gifs/search?q=" + userQuery + limit + key;
+            var reqUrl = "http://api.giphy.com/v1/gifs/search?q=" + userQuery + limit + key;
             // console.log(reqUrl);
             $.ajax({
                 url: reqUrl,
@@ -66,12 +51,26 @@ $(document).ready(function() {
                 });
             });
         },
+        addSearchTerms: function(e) {
+          e.preventDefault();
+          var userTerm = $('#submitBox').val();
+          var newBttn = $('<button>');
+          if (searchGifs.searchTerms.indexOf(userTerm) < 0) {
+              searchGifs.searchTerms.push(userTerm);
+              newBttn.attr("data-search", userTerm);
+              newBttn.addClass("btn");
+              newBttn.addClass("searchButtons");
+              newBttn.text(userTerm);
+              $('#searchButtonsContainer').append(newBttn);
+          }
+        } // end function
 
     }
+    $('#submitTerm').click(searchGifs.addSearchTerms);
     searchGifs.createButtons();
 
 
-
-    $('#submitTerm').click(searchGifs.addSearchTerms);
     $(".searchButtons").click(searchGifs.displayResults);
+
+
 });
