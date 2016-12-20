@@ -11,18 +11,24 @@ body {
 }
 
 .gif {
-  margin: 5px;
+  border: #000 solid 7px;
+
 }
 
+.gifContainer {
+  margin: 10px;
+  display: inline-block;
+}
 .searchButtons {
   margin: 7px 10px;
 }
 
-.gif {
-  border: #000 solid 7px;
+.gifRating {
+  color: #000;
+  font-size: 17px;
 }
 
 .gif:hover {
   cursor: pointer;
-  border: #fff solid 7.5px;
+  border: #f1c40f solid 7.5px;
 }
