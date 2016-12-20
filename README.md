@@ -1,6 +1,8 @@
 # giphy-app
 An application utilizing the Giphy API for Rutgers Coding Bootcamp  
 
+[LIVE LINK](https://chinjon.github.io/giphy-app/)
+
 ## Functionality  
 
 The application utilizes the GIPHY API to search for GIFs using pre-generated search terms and user-generated search terms.  
