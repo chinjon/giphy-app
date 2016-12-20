@@ -34,7 +34,7 @@ $(document).ready(function() {
 
             var userQuery = $(this).data('search');
             var key = "&api_key=dc6zaTOxFJmzC";
-            var limit = "&limit=5"
+            var limit = "&limit=10"
             var reqUrl = "https://api.giphy.com/v1/gifs/search?q=" + userQuery + limit + key;
             // console.log(reqUrl);
             $.ajax({
@@ -43,15 +43,25 @@ $(document).ready(function() {
             }).done(function(response) {
 
                 for (var i = 0; i < response.data.length; i++) {
+                    var gifContain = $('<div>');
+                    gifContain.addClass('gifContainer');
                     var animateLink = response.data[i].images["fixed_height"].url;
                     var stillLink = response.data[i].images["fixed_height_still"].url;
+                    var rating = response.data[i].rating;
+                    console.log(rating);
+                    var ratingSpan = $('<p>');
+                    ratingSpan.addClass('gifRating');
+                    ratingSpan.text("Rating: " + rating);
                     var newImg = $('<img>');
                     newImg.attr('src', stillLink);
                     newImg.attr('data-animate', animateLink);
                     newImg.attr('data-still', stillLink);
                     newImg.attr('data-state', "still")
                     newImg.addClass('gif');
-                    $('#showGIFS').append(newImg);
+                    gifContain.prepend(ratingSpan);
+                    gifContain.append(newImg);
+
+                    $('#showGIFS').append(gifContain);
                 }
 
                 $('.gif').on("click", function() {
@@ -73,5 +83,5 @@ $(document).ready(function() {
 
 
     $('#submitTerm').click(searchGifs.addSearchTerms);
-    $(".searchButtons").click(searchGifs.displayResults);
+    $(document).on('click', '.searchButtons', searchGifs.displayResults);
 });

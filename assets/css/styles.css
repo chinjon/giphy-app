@@ -8,25 +8,27 @@
 
 body {
   font-family: 'Ubuntu Mono', monospace;
-  background: #FC354C; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #FC354C , #0ABFBC); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #FC354C , #0ABFBC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-
-.gif {
-  margin: 5px;
-}
-
-.searchButtons {
-  margin: 7px 10px;
 }
 
 .gif {
   border: #000 solid 7px;
+
+}
+
+.gifContainer {
+  margin: 10px;
+  display: inline-block;
+}
+.searchButtons {
+  margin: 7px 10px;
+}
+
+.gifRating {
+  color: #000;
+  font-size: 17px;
 }
 
 .gif:hover {
   cursor: pointer;
-  border: #fff solid 7.5px;
+  border: #f1c40f solid 7.5px;
 }
