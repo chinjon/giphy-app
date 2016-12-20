@@ -70,7 +70,7 @@ $(document).ready(function() {
     searchGifs.createButtons();
 
 
-    $(".searchButtons").click(searchGifs.displayResults);
+    $(document).on('click', '.searchButtons', searchGifs.displayResults);
 
 
 });
