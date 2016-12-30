@@ -17,7 +17,7 @@ $(document).ready(function() {
           e.preventDefault();
           var userTerm = $('#submitBox').val();
 
-          if (searchGifs.searchTerms.indexOf(userTerm) < 0) {
+          if (searchGifs.searchTerms.indexOf(userTerm) < 0 && userTerm.length > 0) {
               searchGifs.searchTerms.push(userTerm);
               var newBttn = $('<button>');
               newBttn.attr("data-search", userTerm);
